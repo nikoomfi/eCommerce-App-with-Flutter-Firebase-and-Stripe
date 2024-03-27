@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../config/theme.dart';
+
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   const CustomAppbar({
@@ -21,17 +23,20 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
           ),
           child: Text(
             title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontFamily: 'Avenir',
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.headline2!.copyWith(
+                  color: Colors.white,
+                ),
           ),
         ),
       ),
       iconTheme: IconThemeData(color: Colors.black),
-      actions: [IconButton(onPressed: () {}, icon: Icon(Icons.favorite))],
+      actions: [
+        IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/wishlist');
+            },
+            icon: Icon(Icons.favorite))
+      ],
     );
   }
 
