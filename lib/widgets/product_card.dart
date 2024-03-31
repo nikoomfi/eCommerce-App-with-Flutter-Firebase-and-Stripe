@@ -14,7 +14,7 @@ class ProductCard extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: MediaQuery.of(context).size.width / 2.5,
+          width: MediaQuery.of(context).size.width / 2.8,
           height: MediaQuery.of(context).size.height / 1.5,
           child: Image.network(
             product.imageUrl,
@@ -25,24 +25,24 @@ class ProductCard extends StatelessWidget {
           bottom: 10,
           left: 5,
           child: Container(
-            width: MediaQuery.of(context).size.width / 2.5,
+            width: MediaQuery.of(context).size.width / 2.8,
             height: 50,
             decoration: BoxDecoration(color: Colors.pink[300]),
           ),
         ),
         Positioned(
-          bottom: 10,
+          bottom: 5,
           left: 5,
           child: Container(
-            width: MediaQuery.of(context).size.width / 2.5 - 10,
-            height: 50,
+            width: MediaQuery.of(context).size.width / 2.5 - 15,
+            height: 60,
             decoration: BoxDecoration(color: Colors.pink[300]),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
                   Expanded(
-                    flex: 3,
+                    // flex: 3,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,14 +51,14 @@ class ProductCard extends StatelessWidget {
                           product.name,
                           style: Theme.of(context)
                               .textTheme
-                              .headline4!
+                              .bodyText1!
                               .copyWith(color: Colors.white),
                         ),
                         Text(
-                          '\$£{Product.products[0].price}',
+                          '£${product.price}',
                           style: Theme.of(context)
                               .textTheme
-                              .headline6!
+                              .bodyText2!
                               .copyWith(color: Colors.white),
                         ),
                       ],
@@ -70,6 +70,7 @@ class ProductCard extends StatelessWidget {
                       icon: Icon(
                         Icons.add_circle,
                         color: Colors.white,
+                        size: 20,
                       ),
                     ),
                   ),
