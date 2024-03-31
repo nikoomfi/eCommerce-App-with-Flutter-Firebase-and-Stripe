@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../config/theme.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -16,7 +15,10 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       title: Center(
         child: Container(
-          color: Colors.pink[300],
+          decoration: BoxDecoration(
+            color: Colors.pink[300],
+            borderRadius: BorderRadius.circular(10),
+          ),
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 10,

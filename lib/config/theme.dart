@@ -12,32 +12,32 @@ TextTheme textTheme() {
   return const TextTheme(
     headline1: TextStyle(
       color: Colors.black,
-      fontSize: 32,
+      fontSize: 28,
       fontWeight: FontWeight.bold,
     ),
     headline2: TextStyle(
       color: Colors.black,
-      fontSize: 28,
+      fontSize: 24,
       fontWeight: FontWeight.bold,
     ),
     headline3: TextStyle(
       color: Colors.black,
-      fontSize: 24,
+      fontSize: 22,
       fontWeight: FontWeight.bold,
     ),
     headline4: TextStyle(
       color: Colors.black,
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: FontWeight.bold,
     ),
     headline5: TextStyle(
       color: Colors.black,
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: FontWeight.bold,
     ),
     headline6: TextStyle(
       color: Colors.black,
-      fontSize: 12,
+      fontSize: 14,
       fontWeight: FontWeight.bold,
     ),
     bodyText1: TextStyle(
