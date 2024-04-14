@@ -10,7 +10,7 @@ class custom_navigatorbar extends StatelessWidget {
     return BottomAppBar(
       color: Colors.pink[300],
       child: Container(
-        height: 70,
+        height: 50,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
