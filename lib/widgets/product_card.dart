@@ -5,10 +5,15 @@ import '../models/category.dart';
 class ProductCard extends StatelessWidget {
   final Product product;
   final double widthFactor;
+  final double leftposition;
+  final bool isWishlist;
+
   const ProductCard({
     Key? key,
     required this.product,
     this.widthFactor = 2.6,
+    this.leftposition = 5,
+    this.isWishlist = false,
   }) : super(key: key);
 
   @override
@@ -29,9 +34,9 @@ class ProductCard extends StatelessWidget {
           ),
           Positioned(
             bottom: 5,
-            left: 5,
+            left: leftposition,
             child: Container(
-              width: widthValue,
+              width: widthValue - leftposition,
               height: 60,
               decoration:
                   BoxDecoration(color: Colors.pink[300]!.withAlpha(150)),
@@ -69,6 +74,18 @@ class ProductCard extends StatelessWidget {
                         ),
                       ),
                     ),
+                    isWishlist ? 
+                    Expanded(
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ),
+                    ):
+                    SizedBox(),
                   ],
                 ),
               ),
