@@ -20,6 +20,8 @@ class HomeScreen extends StatelessWidget {
           Container(
             child: CarouselSlider(
               options: CarouselOptions(
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 3),
                 aspectRatio: 1.5,
                 viewportFraction: 0.9,
                 enlargeCenterPage: true,
