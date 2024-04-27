@@ -14,21 +14,11 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.pink[300],
-            borderRadius: BorderRadius.circular(10),
-          ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 10,
-          ),
-          child: Text(
-            title,
-            style: Theme.of(context).textTheme.headline2!.copyWith(
-                  color: Colors.white,
-                ),
-          ),
+        child: Text(
+          title,
+          style: Theme.of(context).textTheme.headline1!.copyWith(
+                color: Colors.pink[300],
+              ),
         ),
       ),
       iconTheme: IconThemeData(color: Colors.pink[300] , size: 30),
