@@ -1,4 +1,6 @@
+import 'package:ecommerce_app/blocs/cart/Cart_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../models/category.dart';
 
@@ -64,28 +66,43 @@ class ProductCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Expanded(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.add_circle,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      ),
-                    ),
-                    isWishlist ? 
-                    Expanded(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.delete,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      ),
-                    ):
-                    SizedBox(),
+                    BlocBuilder<CartBloc, CartState>(builder: (context, state) {
+                      if (state is CartLoading) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      if (state is CartLoaded) {
+                        return Expanded(
+                          child: IconButton(
+                            onPressed: () {
+                              context
+                                  .read<CartBloc>()
+                                  .add(CartProductAdded(product));
+                            },
+                            icon: Icon(
+                              Icons.add_circle,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                          ),
+                        );
+                      } else {
+                        return Text('Something went Wrong!');
+                      }
+                    }),
+                    isWishlist
+                        ? Expanded(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                                size: 20,
+                              ),
+                            ),
+                          )
+                        : SizedBox(),
                   ],
                 ),
               ),
