@@ -1,10 +1,9 @@
-import 'dart:async';
-import 'package:ecommerce_app/blocs/cart/Cart_bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ecommerce_app/models/category.dart';
+import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import '../../models/category.dart';
 
-
+part 'cart_event.dart';
+part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartLoading());
