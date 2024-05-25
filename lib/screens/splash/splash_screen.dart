@@ -21,9 +21,9 @@ class SplashScreen extends StatelessWidget {
         children: [
           Center(
             child: Image(
-              image: AssetImage('assets/image/MJ Logo 1.png'),
-              width: 125,
-              height: 125,
+              image: AssetImage('assets/image/logo1.png'),
+              width: 150,
+              height: 150,
             ),
           ),
           SizedBox(

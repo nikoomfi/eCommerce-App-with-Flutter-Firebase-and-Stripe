@@ -56,7 +56,7 @@ class CartScreen extends StatelessWidget {
                         children: [
                           Text(
                             state.cart.freeDeliveryString,
-                            style: Theme.of(context).textTheme.headline5,
+                            style: Theme.of(context).textTheme.bodyText2,
                           ),
                           ElevatedButton(
                             onPressed: () {
@@ -71,7 +71,7 @@ class CartScreen extends StatelessWidget {
                               'Add Items',
                               style: Theme.of(context)
                                   .textTheme
-                                  .headline5!
+                                  .bodyText2!
                                   .copyWith(
                                     color: Colors.white,
                                   ),
@@ -82,10 +82,20 @@ class CartScreen extends StatelessWidget {
                       SizedBox(
                         height: 350,
                         child: ListView.builder(
-                          itemCount: state.cart.products.length,
+                          itemCount: state.cart
+                              .productQuantity(state.cart.products)
+                              .keys
+                              .length,
                           itemBuilder: (context, index) {
                             return CartProductCard(
-                              product: state.cart.products[index],
+                              product: state.cart
+                                  .productQuantity(state.cart.products)
+                                  .keys
+                                  .elementAt(index),
+                              quantity: state.cart
+                                  .productQuantity(state.cart.products)
+                                  .values
+                                  .elementAt(index),
                             );
                           },
                         ),

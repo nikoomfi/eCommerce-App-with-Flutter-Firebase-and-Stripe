@@ -24,7 +24,7 @@ class Cart extends Equatable {
     if (subtotal >= 100.0) {
       return 'You have Free Delivery';
     } else {
-      double missing = 30.0 - subtotal;
+      double missing = 100.0 - subtotal;
       return 'Add \£${missing.toStringAsFixed(2)} for FREE Delivery';
     }
   }
@@ -36,6 +36,18 @@ class Cart extends Equatable {
   }
 
   String get totalString => total(subtotal, deliveryFree).toStringAsFixed(2);
+  Map productQuantity(products) {
+    var quantity = Map();
+
+    products.forEach((product) {
+      if (!quantity.containsKey(product)) {
+        quantity[product] = 1;
+      } else {
+        quantity[product] += 1;
+      }
+    });
+    return quantity;
+  }
 
   @override
   List<Object?> get props => [products];
