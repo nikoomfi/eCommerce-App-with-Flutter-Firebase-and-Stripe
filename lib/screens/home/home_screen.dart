@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(title: 'MJ Shopping'),
-      bottomNavigationBar: custom_navigatorbar(),
+      bottomNavigationBar: custom_navigatorbar(screen: routeName),
       body: ListView(
         children: [
           BlocBuilder<CategoryBloc, CategoryState>(

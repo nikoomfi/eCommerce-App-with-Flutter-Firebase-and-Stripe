@@ -21,6 +21,8 @@ class AppRouter {
         return ProductScreen.route(product: settings.arguments as Product);
       case WishlistScreen.routeName:
         return WishlistScreen.route();
+      case CheckoutScreen.routeName:
+        return CheckoutScreen.route();
 
       default:
         return errorRoute();
@@ -32,6 +34,7 @@ class AppRouter {
         settings: RouteSettings(name: '/error'),
         builder: (_) => Scaffold(
               appBar: AppBar(title: Text('Error')),
+              body: Center(child: Text('Page not found!')),
             ));
   }
 }

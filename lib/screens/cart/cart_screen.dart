@@ -23,7 +23,9 @@ class CartScreen extends StatelessWidget {
             children: [
               ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.white),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/checkout');
+                  },
                   child: Text('GO TO CHECKOUT',
                       style: Theme.of(context)
                           .textTheme
@@ -100,89 +102,10 @@ class CartScreen extends StatelessWidget {
                           },
                         ),
                       ),
+                      OrderSummary(),
                     ],
                   ),
-                  Column(
-                    children: [
-                      Divider(
-                        thickness: 2,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 10,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'SubTotal',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                                Text(
-                                  '\£${state.cart.subtotatalString}',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Delivery Free',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                                Text(
-                                  '\£${state.cart.deliveryFreeString}',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Stack(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 30,
-                            color: Colors.pink[300],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 30,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Total',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline5!
-                                      .copyWith(
-                                        color: Colors.white,
-                                      ),
-                                ),
-                                Text(
-                                  '\£${state.cart.totalString}',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline5!
-                                      .copyWith(
-                                        color: Colors.white,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                 ],
               ),
             );
           } else {
