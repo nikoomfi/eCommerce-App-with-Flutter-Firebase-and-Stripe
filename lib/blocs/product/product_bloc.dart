@@ -9,7 +9,7 @@ part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProductRepository _productRepository;
-  StreamSubscription? _productSubscribtion;
+  StreamSubscription? _productSubscription;
 
   ProductBloc({required ProductRepository productRepository})
       : _productRepository = productRepository,
@@ -28,16 +28,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   }
 
   Stream<ProductState> _mapLoadProductsToState() async* {
-    if (_productSubscribtion != null) {
-        _productSubscribtion?.cancel();
+    if (_productSubscription != null) {
+      _productSubscription?.cancel();
     }
-    _productSubscribtion = _productRepository.getAllProducts().listen(
-        (products) => add(
+    _productSubscription = _productRepository.getAllProducts().listen(
+          (products) => add(
             UpdateProducts(products),
-        ),
-    );
-}
-
+          ),
+        );
+  }
 
   Stream<ProductState> _mapUpdateProductsToState(UpdateProducts event) async* {
     yield ProductLoaded(products: event.products);

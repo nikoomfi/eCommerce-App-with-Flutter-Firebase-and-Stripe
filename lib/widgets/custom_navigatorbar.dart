@@ -4,11 +4,15 @@ import 'package:ecommerce_app/models/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../blocs/checkout/checkout_bloc.dart';
+
 class custom_navigatorbar extends StatelessWidget {
   final String screen;
   final Product? product;
   const custom_navigatorbar({
-    Key? key, required this.screen, this.product,
+    Key? key,
+    required this.screen,
+    this.product,
   }) : super(key: key);
 
   @override
@@ -19,9 +23,9 @@ class custom_navigatorbar extends StatelessWidget {
         height: 20,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: 
-             _selectNavigatorbar(context, screen) ?? _buildNavigatorbar(context),
-           ),
+          children: _selectNavigatorbar(context, screen) ??
+              _buildNavigatorbar(context),
+        ),
       ),
     );
   }
@@ -157,17 +161,35 @@ class custom_navigatorbar extends StatelessWidget {
 
   List<Widget> _buildOrderNowNavigatorbar(context) {
     return [
-      ElevatedButton(
-        onPressed: () {},
-        style: ElevatedButton.styleFrom(
-          primary: Colors.white,
-          shape: RoundedRectangleBorder(),
-        ),
-        child: Text(
-          'Order Now',
-          style: Theme.of(context).textTheme.headline3,
-        ),
-      ),
+      BlocBuilder<CheckoutBloc, CheckoutState>(
+        builder: (context, state) {
+          if (state is CheckoutLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          if (state is CheckoutLoaded) {
+            return ElevatedButton(
+              onPressed: () {
+                context
+                    .read<CheckoutBloc>()
+                    .add(ConfirmCheckout(checkout: state.checkout));
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                shape: RoundedRectangleBorder(),
+              ),
+              child: Text(
+                'Order Now',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+            );
+          } else {
+            return Text('Something went Wrong!');
+          }
+        },
+      )
     ];
   }
 }

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/models/product_model.dart';
 import 'package:ecommerce_app/repositories/product/base_product_repository.dart';
 
-class ProductRepository extends BaseProductRepository {
+class ProductRepository extends BaseCheckoutRepository {
   final FirebaseFirestore _firebaseFirestore;
 
   ProductRepository({FirebaseFirestore? firebaseFirestore})
